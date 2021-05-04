@@ -30,9 +30,9 @@ class ContactController extends Controller
     }
     public function inquiryStore(Request $request,$id){
         $inquiry = new Inquiry();
-        $inquiry->name = $request->name('name');
-        $inquiry->phone = $request->name('phone');
-        $inquiry->message = $request->name('message');
+        $inquiry->name = $request->input('name');
+        $inquiry->phone = $request->input('phone');
+        $inquiry->message = $request->input('message');
         $inquiry->destination_name = $request->input('destination_name');
         $inquiry->save();
         // return $id;
@@ -41,5 +41,10 @@ class ContactController extends Controller
     public function inquiryShow(){
         $inquiry = Inquiry::all();
         return view('contacts.inquiry_show',compact('inquiry'));
+    }
+    public function inquiryDelete($id){
+        $in = Inquiry::find($id);
+        $in->delete();
+        return redirect('/inquiry')->with('error','Record deleted successfully !!');
     }
 }

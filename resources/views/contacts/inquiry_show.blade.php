@@ -44,7 +44,7 @@
                               <td>{{$in->subject}}</td>
                               <td>
                                <div class="btn-group">
-                                   {!!Form::open(['action'=>['App\Http\Controllers\ContactController@delete',$in->id],'method'=>'POST']) !!}
+                                   {!!Form::open(['action'=>['App\Http\Controllers\ContactController@inquiryDelete',$in->id],'method'=>'POST']) !!}
                                
                                    {{Form::hidden('_method','DELETE')}}
 

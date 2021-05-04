@@ -54,7 +54,7 @@ Route::delete('/destination/{id}',[DestinationController::class,'delete']);
 
 
 //posts route
-Route::resource('posts',PostController::class); 
+Route::resource('posts',PostController::class);
 
 //pages route
 // Route::get('/', function () {

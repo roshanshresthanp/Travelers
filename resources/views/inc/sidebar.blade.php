@@ -48,7 +48,7 @@
                         <span class="menu-arrow arrow_carrot-right"></span>
                     </a>
           <ul class="sub">
-            <li><a class="" href="{{url('/post/add')}}">Add Post</a></li>
+            <li><a class="" href="{{url('/post/create')}}">Add Post</a></li>
             <li><a class="" href="{{url('/post/show')}}">Show Post</a></li>
           </ul>
         </li>

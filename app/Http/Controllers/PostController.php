@@ -14,8 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        
-
+        return view('page.blogs');
     }
 
     /**
@@ -71,7 +70,7 @@ class PostController extends Controller
         return redirect('/dashboard')->with('success','Post Created');
 
     }
-    }
+    
 
     /**
      * Display the specified resource.
@@ -120,6 +119,7 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
     }
 }
