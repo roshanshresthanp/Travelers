@@ -17,19 +17,20 @@
                                     <ul id="navigation">
                                         <li><a class="active" href="{{url('/')}}">home</a></li>
                                         <li><a href="{{url('/about')}}">About</a></li>
-                                        <li><a class="" href="{{url('/destination')}}">Destination</a></l/li>
+                                        <li><a class="" href="{{url('/destination')}}">Destination</a></li>
                                         {{-- <li><a href="#">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                     <li><a href="destination_details.html">Destinations details</a></li>
                                                     <li><a href="elements.html">elements</a></li>
                                             </ul>
                                         </li> --}}
-                                        <li><a href="#">blog <i class="ti-angle-down"></i></a>
+                                        <li><a href="{{url('/posts')}}">Blog</a></li>
+                                        {{-- <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="{{url('/post')}}">blog</a></li>
                                                 <li><a href="single-blog.html">single-blog</a></li>
                                             </ul>
-                                        </li>
+                                        </li> --}}
                                         <li><a href="{{url('/contact')}}">Contact</a></li>
                                     </ul>
                                 </nav>
