@@ -27,11 +27,11 @@
                     <table class="table table-striped table-advance table-hover">
                         <tbody>
                            {{-- <tr><th><i class="icon_profile"></i> Restaurant Id</th> --}}
-                            <th><i class="icon_calendar"></i> Date</th>
+                           <tr> <th><i class="icon_calendar"></i> Date</th>
                               <th><i class="icon_pin"></i> Destination</th>
-                              <th><i class="icon_mobile_alt"></i> Phone</th>
+                              <th><i class="icon_profile"></i> Inquirer Name</th>
+                              <th><i class="icon_mobile"></i> Contact</th>
                               <th><i class="icon_mail_alt"></i> Message</th>
-                            <th><i class="icon_table"></i> Subject</th>
                               <th><i class="icon_cogs"></i> Action</th>
                            </tr>
                            @foreach($inquiry as $in)
@@ -41,9 +41,8 @@
                               <td>{{$in->name}}</td>
                               <td>{{$in->phone}}</td>
                               <td>{{$in->message}}</td>
-                              <td>{{$in->subject}}</td>
                               <td>
-                               <div class="btn-group">
+                               {{-- <div class="btn-group"> --}}
                                    {!!Form::open(['action'=>['App\Http\Controllers\ContactController@inquiryDelete',$in->id],'method'=>'POST']) !!}
                                
                                    {{Form::hidden('_method','DELETE')}}
@@ -52,7 +51,7 @@
                                    {{-- {{Form::submit('',['class'=>'btn btn-danger']) }} --}}
                                    <i class="icon_close_alt2">
                                    </i></button>
-                               </a>
+                               {{-- </a> --}}
                                    {!!Form::close()!!}
                                    
                                    

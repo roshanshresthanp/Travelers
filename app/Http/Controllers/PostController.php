@@ -4,9 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use App\Models\User;
 
 class PostController extends Controller
 {
+
+    public function __construct(){
+
+        $this->middleware('auth',['except'=>['index']]);
+    }
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +20,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        return view('pages.blogs');
+        $posts = Post::paginate(5);
+        return view('pages.blogs',compact('posts'));
     }
 
     /**
@@ -39,35 +46,37 @@ class PostController extends Controller
         $this->validate($request, [
         'title'=>'required',
         'body'=> 'required',
-        'cover_image'=>'image|nullable|max:2000'
+        'photo'=>'image|nullable|max:2000'
         ]);
 
-            if($request->hasFile('cover_image')){
-                $filenameFull = $request->file('cover_image')->getClientOriginalName();
+            if($request->hasFile('photo')){
+                $filenameFull = $request->file('photo')->getClientOriginalName();
 
                 $filename = pathinfo($filenameFull,PATHINFO_FILENAME);
 
-                $extension = $request->file('cover_image')->getClientOriginalExtension();
+                $extension = $request->file('photo')->getClientOriginalExtension();
 
                 $filenameToStore = $filename.'_'.time().'.'.$extension;
                 // upload image
-                $path = $request->file('cover_image')->storeAs('public/cover_image',$filenameToStore);
+                $path = $request->file('photo')->storeAs('public/image/posts',$filenameToStore);
 
             } else {
                 $filenameToStore = 'noimage.jpg';
             }
         
         // $user_id = Auth::user()->id;  //get auth id
+
         
             
         $post = new Post();
         $post->title = $request->input('title');
-        $post->body = $request->input('body');
-        $post->cover_image = $filenameToStore;  
-        $post->user_id = auth()->user()->id; //
+        $post->description = $request->input('body');
+        $post->tags = $request->input('tags');
+        $post->image = $filenameToStore;  
+        $post->user_id = auth()->user()->id; 
         $post->save();
 
-        return redirect('/dashboard')->with('success','Post Created');
+        return redirect('/posts/create')->with('success','Post added successfully !!');
 
     }
     
@@ -94,9 +103,10 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        $post = Post::find($id)->delete();
+        $post = Post::find($id);
+        
 
-      return response()->json(['success'=>'Post Deleted successfully']);
+      return view('post.edit',compact('post'));
     }
 
     /**
@@ -108,7 +118,16 @@ class PostController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $post = Post::find($id);
+        $post->title = $request->input('title');
+        $post->description = $request->input('body');
+        $post->tags = $request->input('tags');
+        // $post->image = $filenameToStore;  
+        // $post->user_id = auth()->user()->id; 
+        $post->save();
+
+        return redirect('/post/show')->with('success','Post updated successfully !!');
     }
 
     /**
@@ -121,5 +140,14 @@ class PostController extends Controller
     {
         $post = Post::find($id);
         $post->delete();
+        return redirect('/post/show')->with('error','Post deleted sucessfully !!'); 
+    }
+
+    
+    public function showAll(){
+        $users = User::all();
+        $posts = Post::paginate(5);
+
+        return view('post.show',compact('users','posts'));
     }
 }

@@ -49,7 +49,7 @@
                     </a>
           <ul class="sub">
             <li><a class="" href="{{url('/posts/create')}}">Add Post</a></li>
-            <li><a class="" href="{{url('/posts/show')}}">Show Post</a></li>
+            <li><a class="" href="{{url('/post/show')}}">Show Post</a></li>
           </ul>
         </li>
         <li>

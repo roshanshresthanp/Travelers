@@ -51,7 +51,7 @@
                    
     
 
-         <div class="panel-body">
+                <div class="panel-body">
                         
                         <input type="submit" value="Add" class="btn btn-primary">
                         {{-- {{Form::submit('Submit',['class'=>'btn btn-primary'])}} --}}
@@ -106,18 +106,24 @@
                                </div>
                                </td>
                            </tr>
+
                            @endforeach      
                         </tbody>
                      </table>
                         
                 </section>
+                            <div class="d-flex justify-content-center">
+                                {!! $cats->links() !!}
+                            </div>
                 @else 
                 <div class="alert alert-danger">
                    <p>No categories to show !!</p>
                </div>
                @endif
+              
             </div>
         </div>
+        
         
     
 

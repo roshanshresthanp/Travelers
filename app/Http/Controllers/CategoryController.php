@@ -18,7 +18,8 @@ class CategoryController extends Controller
     }
 
     public function show(){
-        $cats = Category::all();
+        $cats = Category::paginate(5);
+        // $cats->withPath('/admin/users');
         return view('category.show',compact('cats'));
     }
 

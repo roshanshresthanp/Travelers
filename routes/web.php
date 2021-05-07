@@ -55,6 +55,7 @@ Route::delete('/destination/{id}',[DestinationController::class,'delete']);
 
 //posts route
 Route::resource('posts',PostController::class);
+Route::get('/post/show',[PostController::class,'showAll']);
 
 //pages route
 // Route::get('/', function () {
@@ -80,6 +81,11 @@ Route::delete('/inquiry/{id}',[ContactController::class,'inquiryDelete']);
 
 //users show
 Route::get('/users/show',[DashController::class,'userShow']);
+
+//Country place
+Route::get('/country/{id}',[PageController::class,'countryPlace']);
+
+
 
 
 

@@ -84,59 +84,9 @@
 </div> --}}
 <!-- where_togo_area_end  -->
 
-<!-- popular_destination_area_start  -->
-<div class="popular_destination_area">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-lg-6">
-                <div class="section_title text-center mb_70">
-                    <h3>Popular Destination</h3>
-                    <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
-                </div>
-            </div>
-        </div>
-        @if(count($cats)>0)
-        <div class="row">
-            {{-- <div class="col-lg-4 col-md-6">
-                <div class="single_destination">
-                    <div class="thumb">
-                        <img src="img/destination/1.png" alt="">
-                    </div>
-                    <div class="content">
-                        <p class="d-flex align-items-center">Italy <a href="travel_destination.html">  07 Places</a> </p>
-                        
-                    </div>
-                </div>
-            </div> --}}
-            @foreach ($cats as $con)
-                
-            <div class="col-lg-4 col-md-6">
-                <div class="single_destination">
-                    <div class="thumb">
-                        <img src="img/destination/2.png" height="250px" width="400px"  alt="" > 
-                    </div>
-                    <div class="content">
-                        <p class="d-flex align-items-center">{{$con->name}}  <a href="{{url('/country')}}/{{$con->id}}">View places</a> </p>
-                        
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-        <div class="d-flex justify-content-center">
-            {{-- {!! $country->links() !!} --}}
-            {{-- {!! $country->appends(['sort' => 'price'])->links() !!} --}}
-
-        </div>
-        @else
-            <p class="alert alert-danger">Sorry, there is no destination to show !!</p>
-        @endif
-    </div>
-</div>
-<!-- popular_destination_area_end  -->
 
 <!-- newletter_area_start  -->
-<div class="newletter_area overlay">
+{{-- <div class="newletter_area overlay">
     <div class="container">
         <div class="row justify-content-center align-items-center">
             <div class="col-lg-10">
@@ -168,7 +118,7 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- newletter_area_end  -->
 
 <div class="popular_places_area">
@@ -176,39 +126,13 @@
         <div class="row justify-content-center">
             <div class="col-lg-6">
                 <div class="section_title text-center mb_70">
-                    <h3>Popular Places</h3>
+                    <h3>Popular Places of <b>{{$cat->name}}</b></h3>
                     <p>Suffered alteration in some form, by injected humour or good day randomised booth anim 8-bit hella wolf moon beard words.</p>
                 </div>
             </div>
         </div>
         @if(count($dests)>0)
         <div class="row">
-            {{-- <div class="col-lg-4 col-md-6">
-                <div class="single_place">
-                    <div class="thumb">
-                        <img src="img/place/1.png" alt="">
-                        <a href="#" class="prise">$500</a>
-                    </div>
-                    <div class="place_info">
-                        <a href="destination_details.html"><h3>California</h3></a>
-                        <p>United State of America</p>
-                        <div class="rating_days d-flex justify-content-between">
-                            <span class="d-flex justify-content-center align-items-center">
-                                 <i class="fa fa-star"></i> 
-                                 <i class="fa fa-star"></i> 
-                                 <i class="fa fa-star"></i> 
-                                 <i class="fa fa-star"></i> 
-                                 <i class="fa fa-star"></i>
-                                 <a href="#">(20 Review)</a>
-                            </span>
-                            <div class="days">
-                                <i class="fa fa-clock-o"></i>
-                                <a href="#">5 Days</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> --}}
             @foreach($dests as $dest)
             <div class="col-lg-4 col-md-6">
                 <div class="single_place">
@@ -218,17 +142,6 @@
                     </div>
                     <div class="place_info">
                         <a href="{{url('/inquiry')}}/{{$dest->id}}"><h3>{{$dest->name}}</h3></a>
-                        @if(($dest->category_id) === 0)
-                        <p>Uncategorised</p>
-                        @endif
-                        @foreach($cats as $cat)
-                            @if(($dest->category_id) ===($cat->id))
-                            <p> {{$cat->name}}</p>
-        
-                            @endif
-                        @endforeach
-
-                        
                         <div class="rating_days d-flex justify-content-between">
                             <span class="d-flex justify-content-center align-items-center">
                                  <i class="fa fa-star"></i> 
@@ -251,33 +164,19 @@
         @else
             <p class="alert alert-danger">Sorry, there is no place to show !!</p>
         @endif
-        <div class="row">
+
+        {{-- <div class="row">
             <div class="col-lg-12">
                 <div class="more_place_btn text-center">
                     <a class="boxed-btn4" href="{{url('/destination')}}">More Places</a>
                 </div>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
 
 
-<div class="video_area video_bg overlay">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="video_wrap text-center">
-                    <h3>Enjoy Video</h3>
-                    <div class="video_icon">
-                        <a class="popup-video video_play_button" href="https://www.youtube.com/watch?v=f59dDEk57i0">
-                            <i class="fa fa-play"></i>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
+
 
 
 <div class="travel_variation_area">

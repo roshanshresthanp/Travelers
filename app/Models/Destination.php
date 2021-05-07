@@ -8,7 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Destination extends Model
 {
     use HasFactory;
+
+    // protected $table = 'destinations';
+
+    // public $primaryKey = 'id';
+
+    // public $timestamps = true;
+
     public function category(){
-        return $this->belongsTo(Destination::class);
+        return $this->belongsTo(Category::class);
     }
 }

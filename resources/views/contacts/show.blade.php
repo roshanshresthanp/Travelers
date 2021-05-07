@@ -1,6 +1,6 @@
 @extends('layouts.dashboard')
 @section('content')
-hjghjg
+
 <section id="main-content">
     <section class="wrapper">            
         <!--overview start-->

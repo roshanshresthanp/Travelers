@@ -9,7 +9,14 @@ class Category extends Model
 {
     use HasFactory;
 
+
+    // protected $table = 'categories';
+
+    // public $primaryKey = 'id';
+
+    // public $timestamps = true;
+
     public function destinations(){
-        return $this->hasMany(Category::class);
+        return $this->hasMany(Destination::class);
     }
 }

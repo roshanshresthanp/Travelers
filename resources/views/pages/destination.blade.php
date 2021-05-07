@@ -56,6 +56,13 @@
 <div class="popular_places_area">
     <div class="container">
         <div class="row">
+
+            
+
+            {{-- {!! Form::open(['action'=>'App\Http\Controllers\DestinationController@store','method'=>'POST','class'=>'form-horizontal']) !!}  --}}
+            {{-- {!! Form::open(['route'=>'App\Http\Controllers\DestinationController@store','method'=>'POST','class'=>"form-horizontal",'enctype'=>'multipart/form-data']) !!} --}}
+
+
             <div class="col-lg-4">
                 <div class="filter_result_wrap">
                     <h3>Filter Result</h3>
@@ -82,6 +89,8 @@
                                           </select>
                                     </div>
                                 </div>
+
+                               
                                 <div class="col-lg-12">
                                     <div class="range_slider_wrap">
                                         <span class="range">Price range</span>
@@ -97,11 +106,13 @@
                         </div>
 
                         <div class="reset_btn">
-                            <button class="boxed-btn4" type="submit">Reset</button>
+                            <button class="boxed-btn4" type="submit">Search</button>
                         </div>
                     </div>
                 </div>
             </div>
+            {{-- {!!form::close() !!}  --}}
+
             <div class="col-lg-8">
                 @if(count($dests)>0)
                 <div class="row">
@@ -144,8 +155,11 @@
                     @endforeach
 
                 </div>
-                <div><p> {!! $dests->links() !!}</p></div>
-                {{-- {!! $dests->appends(['sort' => 'price'])->links() !!} --}}
+                <div class="d-flex justify-content-center">
+                    {!! $dests->links() !!}
+                                    {{-- {!! $dests->appends(['sort' => 'price'])->links() !!} --}}
+
+                </div>
 
                 
                     

@@ -224,6 +224,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="{{asset('js/jquery.ajaxchimp.min.js')}}"></script>
      {{-- <script src="{{asset('js/jquery.form.js')}}"></script> --}}
     <script src="{{asset('js/jquery.validate.min.js')}}"></script>
+    
     {{-- <script src="{{asset('js/mail-script.js')}}"></script> --}}
 
 
@@ -236,7 +237,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
          }
         });
     </script>
-    <script src="{{url('js/range.js')}} "></script>
+    {{-- <script src="{{asset('js/range.js')}} "></script> --}}
 </body>
 
 </html>

@@ -44,9 +44,11 @@
                                 <label class="col-sm-2 control-label">Select category</label>
                                 <div class="col-sm-10">
                                     <select name="cat_name" class="form-control" required >
-                                        <option value="1">Uncatogorised</option>
-                                        @foreach($cats as $cat)
                                         
+                                        @foreach($cats as $cat)
+                                        @if(($dest->category_id === $cat->id))
+                                        <option value="{{$dest->id}}" selected>{{$cat->name}}</option>
+                                        @endif
                                         
                                         <option value="{{$cat->id}}">{{$cat->name}}</option>
                                         @endforeach

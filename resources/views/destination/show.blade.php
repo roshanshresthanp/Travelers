@@ -19,25 +19,27 @@
                     @include('inc.message')
                    
                 </div>
+
+                @if (count($dests)>0)
                 <section class="panel">
                     {{-- <header class="panel-heading">
                         Advanced Table
                     </header> --}}
-                    @if (count($dest)>0)
+                    
                     <table class="table table-striped table-advance table-hover">
                         <tbody>
-                           <tr><th><i class="icon_profile"></i> Name</th>
-                                <th><i class="icon_profile"></i> Category</th>
-                                <th><i class="icon_mobile"></i> Price</th>
-                                <th><i class="icon_calendar"></i> Duration</th>
-                                <th><i class="icon_mail_alt"></i> Inclusion</th>
-                                <th><i class="icon_mail_alt"></i> Exclusion</th>
-                                <th><i class="icon_mail_alt"></i> Itinerary</th>
-                                <th><i class="icon_pin_alt"></i> Description</th>
-                                <th><i class="icon_cogs"></i> Action</th>
+                           <tr><th><i class="icon_pin_alt"></i> Name</th>
+                                <th><i class="icon_genius"></i>Category</th>
+                                <th><i class="icon_mobile"></i>Price</th>
+                                <th><i class="icon_calendar"></i>Duration</th>
+                                <th>Inclusion</th>
+                                <th>Exclusion</th>
+                                <th>Itinerary</th>
+                                <th>Description</th>
+                                <th><i class="icon_cogs"></i>Action</th>
                            </tr>
                            
-                           @foreach($dest as $dest)
+                           @foreach($dests as $dest)
                            <tr>
                               <td>{{$dest->name}}</td>
                               <td>
@@ -51,7 +53,7 @@
                               <td>{{$dest->duration}}</td>
                               <td>{{$dest->inclusion}}</td>
                               <td>{{$dest->exclusion}}</td>
-                              <td>{{$dest->itinerary}}</td>
+                              <td>{{ str_limit($dest->itinerary, 50) }}</td>
                               <td>{{$dest->description}}</td>
                               <td>
                                <div class="btn-group">
@@ -78,14 +80,19 @@
                                                     
                         </tbody>
                      </table>
+                </section>
+
+                            
+
                      @else 
                      <div class="alert alert-danger">
                         <p>No destinations to show !!</p>
                     </div>
                     @endif 
                         
-                   
-                </section>
+                    <div class="d-flex justify-content-center">
+                        {!! $dests->links() !!}
+                    </div>
             </div>
         </div>
         

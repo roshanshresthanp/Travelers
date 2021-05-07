@@ -10,8 +10,10 @@ use App\Models\Destination;
 class PageController extends Controller
 {
     public function index(){
-        $dests = Destination::all();
         $cats = Category::all();
+        $dests = Destination::paginate(6);
+        // $country = Category::orderBy('updated_at','desc')->simplePaginate(3);
+        // $place = $cat->destinations;
         return view('pages.index',compact('dests','cats'));
 
     }
@@ -20,11 +22,11 @@ class PageController extends Controller
         
     }
     public function destination(){
-        $cats = Category::paginate(6); 
+        $cats = Category::all(); 
         $dests = Destination::paginate(6);
-        // $dests->withPath('/admin/users');
+        
 
-        // $dests->appends(['sort' => 'votes']);
+        // $dests->appends(['sort' => 'price']);
         
 
         return view('pages.destination',compact('dests','cats'));
@@ -33,6 +35,15 @@ class PageController extends Controller
     }
     public function contact(){
         return view('pages.contact');
+    }
+
+    public function countryPlace($id)
+    {
+        // $dest = Destination::find($id);
+        $cat = Category::find($id);
+        $dests = $cat->destinations;
+        return view('pages.country_place',compact('dests','cat'));
+        // return $dests;
     }
     
 

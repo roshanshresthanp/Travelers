@@ -60,10 +60,10 @@ class DestinationController extends Controller
     }
     public function show()
     {
-        $dest = Destination::all();
+        $dests = Destination::paginate(5);
         $cat = Category::all();
 
-        return view('destination.show',compact('dest','cat'));
+        return view('destination.show',compact('dests','cat'));
 
     }
     public function edit($id)
@@ -96,7 +96,7 @@ class DestinationController extends Controller
 // print_r($dest);
 
         
-        return redirect('/destination/show');
+        return redirect('/destination/show')->with('success','Destination updated successfully !!');
       
     }
     public function delete($id){
@@ -117,4 +117,9 @@ class DestinationController extends Controller
         // $dest = Destination::where('name',$name)->get();
         return view('pages.destination_detail',compact('destination','cats'));
     }
+
+    public function filterResult(Request $request){
+        
+return "hiiii";
+    } 
 }

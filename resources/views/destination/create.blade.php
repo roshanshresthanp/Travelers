@@ -89,7 +89,7 @@
                                 </div>
                             </div>
 
-         <div class="panel-body">
+                     <div class="panel-body">
                         
                         <input type="submit" value="Add" class="btn btn-primary">
                         {{-- {{Form::submit('Submit',['class'=>'btn btn-primary'])}} --}}
