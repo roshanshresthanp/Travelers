@@ -9,6 +9,11 @@ use App\Models\Destination;
 
 class PageController extends Controller
 {
+
+
+    
+
+
     public function index(){
         $cats = Category::all();
         $dests = Destination::paginate(6);
@@ -45,6 +50,20 @@ class PageController extends Controller
         return view('pages.country_place',compact('dests','cat'));
         // return $dests;
     }
+
+    public function filterResult(Request $request){
+        
+        $amt = $request->input('amount');
+        $cid = $request->input('country');
+        $con = Category::find($cid);
+
+        // $cats = Category::where('id',$cid)->get();
+        // $cats = Category::where('id',$cid)->get();
+        $a =$con->destinations;
+
+        // return redirect('page.destination_result',compact('cats'));
+        return $a;
+      }
     
 
 }

@@ -37,7 +37,7 @@
                        @foreach($posts as $post)
                        <tr>
                           <td>{{$post->title}}</td>
-                          <td>{{$post->description}}</td>
+                          <td>{{str_limit($post->description, 150)}}</td>
                           <td>{{$post->tags}}</td>
                           <td>{{$post->image}}</td>
                           <td>

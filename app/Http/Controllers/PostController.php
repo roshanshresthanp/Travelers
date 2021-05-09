@@ -11,7 +11,7 @@ class PostController extends Controller
 
     public function __construct(){
 
-        $this->middleware('auth',['except'=>['index']]);
+        $this->middleware('auth',['except'=>['index','show']]);
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +20,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        // $posts = Post::where('title','mustang')->get();
+        $posts = Post::orderBy('updated_at','desc')->paginate(4);
+                // paginate(4);
         return view('pages.blogs',compact('posts'));
     }
 
@@ -88,10 +90,12 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
+    {   
+        $recents = Post::Orderby('created_at','asc')->paginate(4);
         $post = Post::find($id);
+        return view('pages.blog_detail',compact('post','recents'));
 
-        return response()->json($post);
+        
     }
 
 

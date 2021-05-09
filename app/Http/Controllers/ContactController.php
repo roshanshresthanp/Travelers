@@ -9,6 +9,13 @@ use App\Models\Inquiry;
 
 class ContactController extends Controller
 {
+
+        public function __construct()
+        {
+            $this->middleware('auth',['except'=>['inquiryStore','store']]);
+        }
+
+
     public function store(Request $request){
         $contact = new Contact();
         $contact->message = $request->input('message');

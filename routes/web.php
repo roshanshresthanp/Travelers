@@ -65,6 +65,8 @@ Route::get('/post/show',[PostController::class,'showAll']);
 Route::get('/',[PageController::class,'index']);
 Route::get('/about',[PageController::class,'about']);
 Route::get('/destination',[PageController::class,'destination']);
+Route::post('/destination',[PageController::class,'filterResult']);
+
 
 
 //Contact and message route

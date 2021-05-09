@@ -25,25 +25,26 @@ class CategoryController extends Controller
 
     public function store(Request $request){
 
-        // if($request->hasFile('logo')){
-        //     $filenameFull = $request->file('logo')->getClientOriginalName();
-        //     $extension = $request->file('logo')->getClientOriginalExtension();
+        if($request->hasFile('image')){
+            $filenameFull = $request->file('image')->getClientOriginalName();
 
-        //     $filename = pathinfo($filenameFull, PATHINFO_FILENAME);
+            $filename = pathinfo($filenameFull,PATHINFO_FILENAME);
 
-        //     $filenameToStore = $filename.'_'.time().'.'.$extension;
-        //         // upload image
-        //         $path = $request->file('logo')->storeAs('public/img/logo',$filenameToStore);
+            $extension = $request->file('image')->getClientOriginalExtension();
 
-        //     } else {
-        //         $filenameToStore = 'noimage.jpg';
-        //     }
+            $filenameToStore = $filename.'_'.time().'.'.$extension;
+            // upload image
+            $path = $request->file('image')->storeAs('public/image',$filenameToStore);
+
+        } else {
+            $filenameToStore = 'noimage.jpg';
+        }
 
 
         $Cat = new Category();
         $Cat->name = $request->input('name');
         $Cat->description = $request->input('description');
-        // $rest->logo = $filenameToStore;
+        $Cat->image = $filenameToStore;
         $Cat->save();
 
         return redirect('/category/show')->with('success','Category added successfully !!');

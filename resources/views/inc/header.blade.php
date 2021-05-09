@@ -4,7 +4,7 @@
     </div>
 
     <!--logo start-->
-    <a href="{{url('/')}}" class="logo" target="_blank">Travelers<span class="lite"></span></a>
+    <a href="{{url('/')}}" class="logo" target="_blank">{{ config('app.name', 'Laravel') }}<span class="lite"></span></a>
     <!--logo end-->
 
     <div class="nav search-row" id="top_menu">
@@ -24,7 +24,7 @@
       <ul class="nav pull-right top-menu">
 
         <!-- task notificatoin start -->
-        <li id="task_notificatoin_bar" class="dropdown">
+        {{-- <li id="task_notificatoin_bar" class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <i class="icon-task-l"></i>
                           <span class="badge bg-important">6</span>
@@ -106,10 +106,10 @@
               <a href="#">See All Tasks</a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         <!-- task notificatoin end -->
         <!-- inbox notificatoin start-->
-        <li id="mail_notificatoin_bar" class="dropdown">
+        {{-- <li id="mail_notificatoin_bar" class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                           <i class="icon-envelope-l"></i>
                           <span class="badge bg-important">5</span>
@@ -121,7 +121,7 @@
             </li>
             <li>
               <a href="#">
-                                  <span class="photo"><img alt="avatar" src="./img/avatar-mini.jpg"></span>
+                                  <span class="photo"><img alt="avatar" src="admin/img/avatar-mini.jpg"></span>
                                   <span class="subject">
                                   <span class="from">Greg  Martin</span>
                                   <span class="time">1 min</span>
@@ -133,7 +133,7 @@
             </li>
             <li>
               <a href="#">
-                                  <span class="photo"><img alt="avatar" src="./img/avatar-mini2.jpg"></span>
+                                  <span class="photo"><img alt="avatar" src="admin/img/avatar-mini2.jpg"></span>
                                   <span class="subject">
                                   <span class="from">Bob   Mckenzie</span>
                                   <span class="time">5 mins</span>
@@ -145,7 +145,7 @@
             </li>
             <li>
               <a href="#">
-                                  <span class="photo"><img alt="avatar" src="./img/avatar-mini3.jpg"></span>
+                                  <span class="photo"><img alt="avatar" src="admin/img/avatar-mini3.jpg"></span>
                                   <span class="subject">
                                   <span class="from">Phillip   Park</span>
                                   <span class="time">2 hrs</span>
@@ -157,7 +157,7 @@
             </li>
             <li>
               <a href="#">
-                                  <span class="photo"><img alt="avatar" src="./img/avatar-mini4.jpg"></span>
+                                  <span class="photo"><img alt="avatar" src="admin/img/avatar-mini4.jpg"></span>
                                   <span class="subject">
                                   <span class="from">Ray   Munoz</span>
                                   <span class="time">1 day</span>
@@ -171,10 +171,11 @@
               <a href="#">See all messages</a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         <!-- inbox notificatoin end -->
+
         <!-- alert notification start-->
-        <li id="alert_notificatoin_bar" class="dropdown">
+        {{-- <li id="alert_notificatoin_bar" class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
 
                           <i class="icon-bell-l"></i>
@@ -217,40 +218,51 @@
               <a href="#">See all notifications</a>
             </li>
           </ul>
-        </li>
+        </li> --}}
         <!-- alert notification end-->
+
         <!-- user login dropdown start-->
         <li class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                          <span class="profile-ava">
-                              <img alt="" src="img/avatar1_small.jpg">
+                          <span class="profile-ava"> 
+                            <i class="icon_profile"></i>
+                              {{-- <img alt="Hello" src="../admin/img/avatar1_small.jpg"> --}}
                           </span>
-                          <span class="username">Jenifer Smith</span>
-                          <b class="caret"></b>
+                          <span class="username"><strong>Hi</strong> 
+                            
+                            @if(!empty(Auth::user()->name)) {{Auth::user()->name}} @endif</span>
+                          
+                            <b class="caret"></b>
                       </a>
           <ul class="dropdown-menu extended logout">
             <div class="log-arrow-up"></div>
-            <li class="eborder-top">
+
+             {{-- <li class="eborder-top">
               <a href="#"><i class="icon_profile"></i> My Profile</a>
             </li>
-            <li>
-              <a href="#"><i class="icon_mail_alt"></i> My Inbox</a>
-            </li>
+            
             <li>
               <a href="#"><i class="icon_clock_alt"></i> Timeline</a>
             </li>
             <li>
               <a href="#"><i class="icon_chat_alt"></i> Chats</a>
+            </li> --}}
+            <li>
+              <a href="{{url('inquiry')}}"><i class="icon_mail_alt"></i> View message</a>
             </li>
             <li>
-              <a href="login.html"><i class="icon_key_alt"></i> Log Out</a>
-            </li>
+              <a href="{{url('users/show')}}"><i class="icon_clock_alt"></i>All users</a>
+            </li> 
+            
             <li>
-              <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
+              <a href="{{ route('logout') }}"
+              onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();"> <i class="icon_key_alt"></i> Logout</a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                              @csrf
+                          </form>
             </li>
-            <li>
-              <a href="documentation.html"><i class="icon_key_alt"></i> Documentation</a>
-            </li>
+            
           </ul>
         </li>
         <!-- user login dropdown end -->

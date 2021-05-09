@@ -43,18 +43,22 @@
                            <tr>
                               <td>{{$dest->name}}</td>
                               <td>
-                                  @foreach($cat as $cats)
-                                  @if(($dest->category_id) === ($cats->id))
-                                  {{$cats->name}}
-                                  @endif
-                                  @endforeach
+                                @if(($dest->category_id===0))
+                                Uncategorised
+                                @endif
+
+                                @foreach($cat as $cats)
+                                @if(($dest->category_id) === ($cats->id))
+                                {{$cats->name}}
+                                @endif
+                                @endforeach
                               </td>
                               <td>{{$dest->price}}</td>
                               <td>{{$dest->duration}}</td>
-                              <td>{{$dest->inclusion}}</td>
-                              <td>{{$dest->exclusion}}</td>
-                              <td>{{ str_limit($dest->itinerary, 50) }}</td>
-                              <td>{{$dest->description}}</td>
+                              <td>{{str_limit ($dest->inclusion, 100)}}</td>
+                              <td>{{ str_limit ($dest->exclusion, 100)}}</td>
+                              <td>{{ str_limit($dest->itinerary, 100) }}</td>
+                              <td>{{ str_limit($dest->description, 100)}}</td>
                               <td>
                                <div class="btn-group">
                                    {!!Form::open(['action'=>['App\Http\Controllers\DestinationController@delete',$dest->id],'method'=>'POST']) !!}

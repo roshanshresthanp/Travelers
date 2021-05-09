@@ -60,19 +60,19 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Inclusion</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="inclusion" required >
+                                    <textarea  class="form-control" name="inclusion" required ></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Exclusion</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="exclusion" required >
+                                    <textarea type="text" class="form-control" name="exclusion" required ></textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Itinerary</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="itinerary" required >
+                                    <textarea class="form-control" name="itinerary" required ></textarea>
                                 </div>
                             </div>
                             <div class="form-group">

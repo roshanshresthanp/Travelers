@@ -41,12 +41,13 @@
                                     <input type="text" class="form-control" name="contact" required placeholder="Restaurant / caffe contact">
                                 </div>
                             </div>
-                        <div class="form-group">
-                                <label class="col-sm-2 control-label">Upload logo</label>
+                         --}}
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Upload image</label>
                                 <div class="col-sm-10">
-                                    <input type="file" name="logo">
+                                    <input type="file" name="image" required>
                                 </div>
-                            </div> --}}
+                            </div>
                    
                    
     
@@ -74,8 +75,8 @@
                         <tbody>
                            {{-- <tr><th><i class="icon_profile"></i> Restaurant Id</th> --}}
                               <th><i class="icon_profile"></i> Category Name</th>
-                              <th><i class="icon_pin_alt"></i> Description</th>
-                                 {{-- <th><i class="icon_mobile"></i> Contact</th> --}}
+                              <th><i class="icon_documents_alt"></i> Description</th>
+                              <th><i class="icon_document_alt"></i> Image</th>
                              
                               {{-- <th><i class="icon_mail_alt"></i> Email</th> --}}
                               <th><i class="icon_cogs"></i> Action</th>
@@ -85,6 +86,7 @@
                              {{-- <td>{{$rest->id}}</td> --}}
                               <td>{{$cat->name}}</td>
                               <td>{{$cat->description}}</td>
+                              <td>{{$cat->image}}</td>
                               <td>
                                <div class="btn-group">
                                    {!!Form::open(['action'=>['App\Http\Controllers\CategoryController@delete',$cat->id],'method'=>'POST']) !!}

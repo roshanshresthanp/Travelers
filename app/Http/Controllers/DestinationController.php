@@ -9,6 +9,14 @@ use App\Models\Destination;
 
 class DestinationController extends Controller
 {
+
+            public function __construct(){
+
+                $this->middleware('auth',['except'=>['destinationDetail','display','filterResult']]);
+            }
+
+
+
     public function destinationDetail($id){
         $dest = Destination::find($id);
         return view('pages.destination_detail',compacts('dest'));
@@ -60,7 +68,7 @@ class DestinationController extends Controller
     }
     public function show()
     {
-        $dests = Destination::paginate(5);
+        $dests = Destination::paginate(8);
         $cat = Category::all();
 
         return view('destination.show',compact('dests','cat'));
@@ -118,8 +126,5 @@ class DestinationController extends Controller
         return view('pages.destination_detail',compact('destination','cats'));
     }
 
-    public function filterResult(Request $request){
-        
-return "hiiii";
-    } 
+    
 }

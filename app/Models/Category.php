@@ -19,4 +19,17 @@ class Category extends Model
     public function destinations(){
         return $this->hasMany(Destination::class);
     }
+
+    
+    //
+
+    public static function boot() {
+        parent::boot();
+        self::deleting(function($category) { // before delete() method call this
+             $category->destinations()->each(function($dest) {
+                $dest->delete(); // <-- direct deletion
+             });
+             // do the rest of the cleanup...
+        });
+    }
 }

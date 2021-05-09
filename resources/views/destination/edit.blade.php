@@ -74,19 +74,19 @@
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Inclusion</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="inclusion" required value="{{$dest->inclusion}}" >
+                                    <textarea class="form-control" name="inclusion" required >{{$dest->inclusion}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Exclusion</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="exclusion" required value={{$dest->exclusion}}>
+                                    <textarea class="form-control" name="exclusion" required> {{$dest->exclusion}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Itinerary</label>
                                 <div class="col-sm-10">
-                                    <input type="text" class="form-control" name="itinerary" required value="{{$dest->itinerary}}">
+                                    <textarea class="form-control" name="itinerary" required >{{$dest->itinerary}}</textarea>
                                 </div>
                             </div>
                             <div class="form-group">

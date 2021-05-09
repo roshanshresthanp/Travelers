@@ -70,15 +70,15 @@
                             <div class="row">
                                 <div class="col-lg-12">
                                     <div class="single_select">
-{!! Form::open(['action'=>'App\Http\Controllers\PageController@filterResult','method'=>'POST','class'=>'form-horizontal']) !!} 
+{{-- {!! Form::open(['action'=>'App\Http\Controllers\PageController@filterResult','method'=>'POST','class'=>'form-horizontal']) !!}  --}}
 
-                                        <select name="country">
-                                            @foreach($cats as $cat)
+                                        {{-- <select name="country">
+                                            @foreach($cats as $cat) --}}
                                             {{-- <option data-display="Country">Country</option> --}}
-                                            <option value="{{$cat->id}}">{{$cat->name}}</option>
+                                            {{-- <option value="$cat->id">$cat->name</option>
                                             
                                             @endforeach
-                                          </select>
+                                          </select> --}}
                                     </div>
                                 </div>
                                 <div class="col-lg-12">
@@ -113,7 +113,7 @@
                     </div>
                 </div>
             </div>
-            {!!form::close() !!} 
+            {{-- {!!form::close() !!}  --}}
 
             <div class="col-lg-8">
                 @if(count($dests)>0)

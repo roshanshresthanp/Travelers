@@ -29,17 +29,17 @@
                     <article class="blog_item">
                         <div class="blog_item_img">
                             <img class="card-img rounded-0" src="{{asset('storage/image/posts')}}/{{$post->image}}"   alt="">
-                            <a href="#" class="blog_item_date">
+                            <a href="{{url('posts')}}/{{$post->id}}" class="blog_item_date">
                                 {{-- <h3>1</h3> --}}
-                                <p>Jan</p>
+                                <p>View</p>
                             </a>
                         </div>
 
                         <div class="blog_details">
-                            <a class="d-inline-block" href="single-blog.html">
+                            <a class="d-inline-block" href="{{url('posts')}}/{{$post->id}}">
                                 <h2>{{$post->title}}</h2>
                             </a>
-                            <p>{{$post->description}}</p>
+                            <p>{!!str_limit($post->description, 300)!!}  </p>
                             <ul class="blog-info-link">
                                 <li><a href="#"><i class="fa fa-user"></i> {{$post->tags}}</a></li>
                                 <li><a href="#"><i class="fa fa-comments"></i> {{$post->created_at}}</a></li>
@@ -53,22 +53,9 @@
 
                     <nav class="blog-pagination justify-content-center d-flex">
                         <ul class="pagination">
-                            <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Previous">
-                                    <i class="ti-angle-left"></i>
-                                </a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link">1</a>
-                            </li>
-                            <li class="page-item active">
-                                <a href="#" class="page-link">2</a>
-                            </li>
-                            <li class="page-item">
-                                <a href="#" class="page-link" aria-label="Next">
-                                    <i class="ti-angle-right"></i>
-                                </a>
-                            </li>
+                
+                            {{$posts->links()}}
+                            
                         </ul>
                     </nav>
                 </div>
@@ -203,42 +190,7 @@
                         </ul>
                     </aside>
 
-
-                    <aside class="single_sidebar_widget instagram_feeds">
-                        <h4 class="widget_title">Instagram Feeds</h4>
-                        <ul class="instagram_row flex-wrap">
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="img/post/post_5.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="img/post/post_6.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="img/post/post_7.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="img/post/post_8.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="img/post/post_9.png" alt="">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <img class="img-fluid" src="img/post/post_10.png" alt="">
-                                </a>
-                            </li>
-                        </ul>
-                    </aside>
+                   
 
 
                     <aside class="single_sidebar_widget newsletter_widget">
@@ -256,6 +208,8 @@
                 </div>
             </div>
         </div>
+
+        
 
         @else 
         <div class="alert alert-danger">
